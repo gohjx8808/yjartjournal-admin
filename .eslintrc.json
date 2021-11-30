@@ -5,10 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb",
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "airbnb"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -20,22 +17,17 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
+        "no-use-before-define": "off",
         "react/jsx-filename-extension": [
             "warn",
             {
                 "extensions": [
                     ".tsx"
                 ]
-            }
-        ],
-        "react/function-component-definition": [
-            2,
-            {
-                "namedComponents": "arrow-function",
-                "unnamedComponents": "arrow-function"
             }
         ],
         "import/extensions": [
@@ -46,12 +38,28 @@
                 "tsx": "never"
             }
         ],
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": [
-            "error"
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "camelcase": "off",
+        "no-unused-vars": "off",
+        "no-undef": "off",
+        "import/no-duplicates": "off",
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsFor": [
+                    "state"
+                ]
+            }
         ],
         "react/jsx-props-no-spreading": "off",
-        "max-len": ["warn", { "code": 80 }]
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function"
+            }
+        ]
     },
     "settings": {
         "import/resolver": {

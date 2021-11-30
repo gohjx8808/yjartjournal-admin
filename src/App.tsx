@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react';
 import * as React from 'react';
 import { Route, Routes } from 'react-router';
-import Sample from './Sample';
+import Sample from './modules/auth/views/Login';
 
 const App = () => (
   <ChakraProvider theme={theme}>
