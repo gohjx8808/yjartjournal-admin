@@ -14,8 +14,10 @@ interface RegisteredPasswordInputProps extends InputProps{
 
 const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
   const {
-    isRequired, errors, register, id, placeholder,
+    isRequired, errors, id, placeholder,
   } = props;
+  const { register, ...inputProps } = props;
+
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -26,7 +28,7 @@ const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
         <Input
           {...register(id || '')}
           type={show ? 'text' : 'password'}
-          {...props}
+          {...inputProps}
         />
         <InputRightElement>
           <IconButton aria-label="Toggle Visibility" variant="ghost" onClick={handleClick} icon={show ? <RiEyeOffFill /> : <RiEyeFill />} />

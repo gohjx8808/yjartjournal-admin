@@ -11,15 +11,17 @@ interface RegisteredTextInputProps extends InputProps{
 
 const RegisteredTextInput = (props:RegisteredTextInputProps) => {
   const {
-    errors, register, id, placeholder, isRequired,
+    errors, id, placeholder, isRequired,
   } = props;
+
+  const { register, ...inputProps } = props;
 
   return (
     <FormControl isInvalid={!!errors} isRequired={isRequired}>
       <FormLabel htmlFor={id}>{placeholder}</FormLabel>
       <Input
         {...register(id || '')}
-        {...props}
+        {...inputProps}
       />
       <FormErrorMessage>
         {errors && errors.message}
