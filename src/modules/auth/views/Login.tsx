@@ -1,7 +1,7 @@
 import {
   Button,
   Center,
-  Container, Flex, Grid, Image, VStack,
+  Container, Image, VStack,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as React from 'react';
@@ -24,7 +24,7 @@ const Sample = () => {
 
   return (
     <Container maxW="container.xl">
-      <Center h="90vh">
+      <Center h="100vh">
         <VStack spacing="18" width="100%">
           <Image src={logo} boxSize="180px" borderRadius="full" alt="logo" />
           <Container padding="10" borderRadius="5" border="1px solid grey">
@@ -46,8 +46,9 @@ const Sample = () => {
                 />
                 <Button
                   mt={4}
-                  colorScheme="teal"
                   isLoading={isSubmitting}
+                  bgColor="primary.button"
+                  _hover={{ bg: 'primary.main' }}
                   type="submit"
                 >
                   Login

@@ -4,7 +4,7 @@ import {
 import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
-interface RegisteredTextInputProps extends InputProps{
+interface RegisteredTextInputProps extends Omit<InputProps, 'focusBorderColor'>{
   errors:FieldErrors
   register:UseFormRegister<Record<string, any>>
 }
@@ -21,6 +21,7 @@ const RegisteredTextInput = (props:RegisteredTextInputProps) => {
       <FormLabel htmlFor={id}>{placeholder}</FormLabel>
       <Input
         {...register(id || '')}
+        focusBorderColor="secondary"
         {...inputProps}
       />
       <FormErrorMessage>

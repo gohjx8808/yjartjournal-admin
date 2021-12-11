@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 
-interface RegisteredPasswordInputProps extends InputProps{
+interface RegisteredPasswordInputProps extends Omit<InputProps, 'type'|'focusBorderColor'>{
   errors:FieldErrors
   register:UseFormRegister<Record<string, any>>
 }
@@ -28,6 +28,7 @@ const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
         <Input
           {...register(id || '')}
           type={show ? 'text' : 'password'}
+          focusBorderColor="secondary"
           {...inputProps}
         />
         <InputRightElement>
