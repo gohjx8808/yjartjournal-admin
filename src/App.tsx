@@ -12,7 +12,10 @@ const App = () => {
         main: '#f5dbc9',
         button: '#f5dbc9B3',
       },
-      secondary: '#B67B5E',
+      secondary: {
+        main: '#B67B5E',
+        button: '#B67B5EE6',
+      },
     },
   });
 

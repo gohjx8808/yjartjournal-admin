@@ -28,7 +28,8 @@ const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
         <Input
           {...register(id || '')}
           type={show ? 'text' : 'password'}
-          focusBorderColor="secondary"
+          focusBorderColor="secondary.main"
+          bgColor="white"
           {...inputProps}
         />
         <InputRightElement>

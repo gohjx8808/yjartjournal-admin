@@ -21,7 +21,8 @@ const RegisteredTextInput = (props:RegisteredTextInputProps) => {
       <FormLabel htmlFor={id}>{placeholder}</FormLabel>
       <Input
         {...register(id || '')}
-        focusBorderColor="secondary"
+        focusBorderColor="secondary.main"
+        bgColor="white"
         {...inputProps}
       />
       <FormErrorMessage>
