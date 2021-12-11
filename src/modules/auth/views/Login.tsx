@@ -6,7 +6,6 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import logo from '../../../images/icon.jpeg';
 import RegisteredPasswordInput from '../../../RegisteredInputs/RegisteredPasswordInput';
 import RegisteredTextInput from '../../../RegisteredInputs/RegisteredTextInput';
 import { LoginSchema } from '../src/LoginSchema';
@@ -26,7 +25,7 @@ const Sample = () => {
     <Container maxW="container.xl">
       <Center h="100vh">
         <VStack spacing="18" width="100%">
-          <Image src={logo} boxSize="180px" borderRadius="full" alt="logo" />
+          <Image src="/favicon.png" boxSize="180px" borderRadius="full" alt="logo" />
           <Container padding="10" borderRadius="5" border="1px solid grey">
             <form onSubmit={handleSubmit(onSubmit)}>
               <VStack spacing="5">
