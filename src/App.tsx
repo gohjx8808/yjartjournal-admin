@@ -2,8 +2,10 @@ import {
   ChakraProvider, extendTheme,
 } from '@chakra-ui/react';
 import * as React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Routes } from 'react-router';
 import Sample from './modules/auth/views/Login';
+import Router from './modules/Router';
 
 const App = () => {
   const theme = extendTheme({
@@ -19,11 +21,13 @@ const App = () => {
     },
   });
 
+  const queryClient = new QueryClient();
+
   return (
     <ChakraProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<Sample />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <Router />
+      </QueryClientProvider>
     </ChakraProvider>
   );
 };
