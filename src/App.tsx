@@ -4,7 +4,7 @@ import {
 import { initializeApp } from 'firebase/app';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Router from './modules/Router';
+import Router from './modules/router/Router';
 
 const App = () => {
   const theme = extendTheme({

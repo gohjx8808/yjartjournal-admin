@@ -2,25 +2,45 @@ import {
   Box,
   Button,
   Center,
-  Container, Image, VStack,
+  Container, Image, useToast, VStack,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router';
 import RegisteredPasswordInput from '../../../RegisteredInputs/RegisteredPasswordInput';
 import RegisteredTextInput from '../../../RegisteredInputs/RegisteredTextInput';
+import routeNames from '../../router/routeNames';
+import { login } from '../src/loginApis';
 import { LoginSchema } from '../src/LoginSchema';
 
 const Sample = () => {
   const {
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     handleSubmit,
   } = useForm({ resolver: yupResolver(LoginSchema) });
 
-  const onSubmit = (values:any) => {
-    console.log(values);
-  };
+  const toast = useToast();
+  const navigate = useNavigate();
+
+  const { mutate, isLoading } = useMutation('submitLogin', login, {
+    onSuccess: () => {
+      navigate(routeNames.dashboard);
+    },
+    onError: () => {
+      toast({
+        title: 'Error',
+        description: 'Your username/password is incorrect.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+  });
+
+  const onSubmit = (values:login.submitLoginPayload) => mutate(values);
 
   return (
     <Box bgColor="blue.50">
@@ -47,7 +67,7 @@ const Sample = () => {
                   />
                   <Button
                     mt={4}
-                    isLoading={isSubmitting}
+                    isLoading={isLoading}
                     bgColor="primary.button"
                     _hover={{ bg: 'primary.main' }}
                     type="submit"
