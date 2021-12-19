@@ -1,12 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE:auth.state = {
+  userInfo: {
+    addressBook: [],
+    dob: '',
+    email: '',
+    fullName: '',
+    gender: '',
+    phoneNumber: 0,
+    roles: [],
+    uid: '',
+  },
+};
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: INITIAL_STATE,
   reducers: {
-    storeUserInfo: () => {},
+    storeUserInfo: (state, action:PayloadAction<auth.userInfo>) => {
+      state.userInfo = action.payload;
+    },
   },
 });
 
