@@ -12,10 +12,10 @@ import { useNavigate } from 'react-router';
 import RegisteredPasswordInput from '../../../RegisteredInputs/RegisteredPasswordInput';
 import RegisteredTextInput from '../../../RegisteredInputs/RegisteredTextInput';
 import routeNames from '../../router/routeNames';
-import { login } from '../src/authApis';
+import { getUserInfo, login } from '../src/authApis';
 import { loginSchema } from '../src/authSchema';
 
-const Sample = () => {
+const Login = () => {
   const {
     register,
     formState: { errors },
@@ -25,9 +25,28 @@ const Sample = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const { mutate, isLoading } = useMutation('submitLogin', login, {
-    onSuccess: () => {
+  const { mutate: getuserInfo } = useMutation('getUserInfo', getUserInfo, {
+    onSuccess: (response) => {
+      const userInfo:auth.userInfo = response.val();
+      if (!userInfo.roles.includes('admin')) {
+        throw Error('No permission');
+      }
       navigate(routeNames.dashboard);
+    },
+    onError: () => {
+      toast({
+        title: 'Error',
+        description: 'You do not have this permission.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+  });
+
+  const { mutate: submitLogin, isLoading } = useMutation('submitLogin', login, {
+    onSuccess: (response) => {
+      getuserInfo(response.user.uid);
     },
     onError: () => {
       toast({
@@ -40,7 +59,7 @@ const Sample = () => {
     },
   });
 
-  const onSubmit = (values:login.submitLoginPayload) => mutate(values);
+  const onSubmit = (values:auth.submitLoginPayload) => submitLogin(values);
 
   return (
     <Box bgColor="blue.50">
@@ -84,4 +103,4 @@ const Sample = () => {
   );
 };
 
-export default Sample;
+export default Login;
