@@ -12,15 +12,15 @@ import { useNavigate } from 'react-router';
 import RegisteredPasswordInput from '../../../RegisteredInputs/RegisteredPasswordInput';
 import RegisteredTextInput from '../../../RegisteredInputs/RegisteredTextInput';
 import routeNames from '../../router/routeNames';
-import { login } from '../src/loginApis';
-import { LoginSchema } from '../src/LoginSchema';
+import { login } from '../src/authApis';
+import { loginSchema } from '../src/authSchema';
 
 const Sample = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ resolver: yupResolver(LoginSchema) });
+  } = useForm({ resolver: yupResolver(loginSchema) });
 
   const toast = useToast();
   const navigate = useNavigate();
