@@ -6,15 +6,14 @@ import {
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as React from 'react';
+import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router';
 import RegisteredPasswordInput from '../../../RegisteredInputs/RegisteredPasswordInput';
 import RegisteredTextInput from '../../../RegisteredInputs/RegisteredTextInput';
-import { useAppDispatch } from '../../../store/hooks';
 import routeNames from '../../router/routeNames';
 import { getUserInfo, login } from '../src/authApis';
-import { storeUserInfo } from '../src/authReducer';
 import { loginSchema } from '../src/authSchema';
 
 const Login = () => {
@@ -27,7 +26,7 @@ const Login = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const dispatch = useAppDispatch();
+  const [cookies, setCookie] = useCookies(['userInfo']);
 
   const { mutate: getuserInfo } = useMutation('getUserInfo', getUserInfo, {
     onSuccess: (response) => {
@@ -36,7 +35,7 @@ const Login = () => {
       if (!userInfo.roles.includes('admin')) {
         throw Error('No permission');
       }
-      dispatch(storeUserInfo({ ...userInfo, uid }));
+      setCookie('userInfo', { ...userInfo, uid }, { path: '/' });
       navigate(routeNames.dashboard);
     },
     onError: () => {

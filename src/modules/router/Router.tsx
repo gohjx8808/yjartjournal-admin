@@ -1,19 +1,19 @@
-import { Routes, Route, useNavigate } from 'react-router';
 import React, { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import { Route, Routes, useNavigate } from 'react-router';
 import Login from '../auth/views/Login';
-import routeNames from './routeNames';
 import Dashboard from '../Dashboard';
-import { useAppSelector } from '../../store/hooks';
+import routeNames from './routeNames';
 
 const Router = () => {
-  const userInfo = useAppSelector((state) => state.auth.userInfo);
   const navigate = useNavigate();
+  const [cookie] = useCookies(['userInfo']);
 
   useEffect(() => {
-    if (!userInfo.uid) {
+    if (!cookie.userInfo) {
       navigate(routeNames.home);
     }
-  }, [navigate, userInfo.uid]);
+  }, [navigate, cookie]);
 
   return (
     <Routes>
