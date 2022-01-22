@@ -92,9 +92,9 @@ const Login = () => {
                   <Button
                     mt={4}
                     isLoading={isLoading}
-                    bgColor="primary.button"
-                    _hover={{ bg: 'primary.main' }}
+                    colorScheme="primary"
                     type="submit"
+                    color="black"
                   >
                     Login
                   </Button>

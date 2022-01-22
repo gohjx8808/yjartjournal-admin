@@ -50,7 +50,9 @@ const MainLayout = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>Create your account</DrawerHeader>
-
+          <Button colorScheme="secondary" variant="ghost">
+            test
+          </Button>
           <DrawerBody>
             <Input placeholder="Type here..." />
           </DrawerBody>
