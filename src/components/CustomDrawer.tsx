@@ -1,5 +1,13 @@
 import {
-  Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, VStack,
+  Button,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  VStack,
 } from '@chakra-ui/react';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router';
@@ -33,6 +41,7 @@ const CustomDrawer = (props:CustomDrawerProps) => {
         <DrawerHeader>
           YJ ArtJournal Admin
         </DrawerHeader>
+        <Divider />
         <DrawerBody>
           <VStack>
             <Button
@@ -46,6 +55,7 @@ const CustomDrawer = (props:CustomDrawerProps) => {
             >
               Users
             </Button>
+            <Divider />
             <Button
               colorScheme="secondary"
               variant="ghost"
