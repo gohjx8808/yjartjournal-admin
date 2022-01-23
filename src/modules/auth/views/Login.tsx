@@ -36,7 +36,7 @@ const Login = () => {
         throw Error('No permission');
       }
       setCookie('userInfo', { ...userInfo, uid }, { path: '/' });
-      navigate(routeNames.dashboard);
+      navigate(routeNames.users);
     },
     onError: () => {
       toast({

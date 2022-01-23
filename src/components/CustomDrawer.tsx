@@ -1,8 +1,10 @@
 import {
-  Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Button, VStack,
+  Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, VStack,
 } from '@chakra-ui/react';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import React from 'react';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router';
+import routeNames from '../modules/router/routeNames';
 
 interface CustomDrawerProps{
   isDrawerOpen:boolean
@@ -11,6 +13,14 @@ interface CustomDrawerProps{
 
 const CustomDrawer = (props:CustomDrawerProps) => {
   const { isDrawerOpen, onDrawerClose } = props;
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const onNavigate = (routeName:route) => {
+    navigate(routeName);
+    onDrawerClose();
+  };
 
   return (
     <Drawer
@@ -26,10 +36,26 @@ const CustomDrawer = (props:CustomDrawerProps) => {
         </DrawerHeader>
         <DrawerBody>
           <VStack>
-            <Button colorScheme="secondary" variant="ghost" w="100%" leftIcon={<FaUser />} justifyContent="left">
+            <Button
+              colorScheme="secondary"
+              variant="ghost"
+              w="100%"
+              leftIcon={<FaUser />}
+              justifyContent="left"
+              isActive={pathname === routeNames.users}
+              onClick={() => onNavigate(routeNames.users)}
+            >
               Users
             </Button>
-            <Button colorScheme="secondary" variant="ghost" w="100%" leftIcon={<FaShoppingCart />} justifyContent="left">
+            <Button
+              colorScheme="secondary"
+              variant="ghost"
+              w="100%"
+              leftIcon={<FaShoppingCart />}
+              justifyContent="left"
+              isActive={pathname === routeNames.products}
+              onClick={() => onNavigate(routeNames.products)}
+            >
               Products
             </Button>
           </VStack>
