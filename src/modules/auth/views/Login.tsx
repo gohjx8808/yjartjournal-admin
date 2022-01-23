@@ -5,7 +5,6 @@ import {
   Container, Image, useToast, VStack,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as React from 'react';
 import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
@@ -26,7 +25,8 @@ const Login = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const [cookies, setCookie] = useCookies(['userInfo']);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cookie, setCookie] = useCookies(['userInfo']);
 
   const { mutate: getuserInfo } = useMutation('getUserInfo', getUserInfo, {
     onSuccess: (response) => {

@@ -1,7 +1,6 @@
 import {
   FormControl, FormErrorMessage, FormLabel, Input, InputProps,
 } from '@chakra-ui/react';
-import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 interface RegisteredTextInputProps extends Omit<InputProps, 'focusBorderColor'>{

@@ -2,7 +2,6 @@ import {
   ChakraProvider, extendTheme,
 } from '@chakra-ui/react';
 import { initializeApp } from 'firebase/app';
-import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Router from './modules/router/Router';
 

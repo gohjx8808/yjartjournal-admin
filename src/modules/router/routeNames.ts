@@ -1,4 +1,4 @@
-const routeNames:{[key:string]:route} = {
+const routeNames:{ [key:string]:route } = {
   home: '/',
   dashboard: '/dashboard',
   users: '/users',

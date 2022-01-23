@@ -3,7 +3,6 @@ import {
 } from '@chakra-ui/react';
 import { useCookies } from 'react-cookie';
 import { FaBars, FaSignOutAlt } from 'react-icons/fa';
-import React from 'react';
 
 interface NavBarProps{
   toggleDrawer:()=>void

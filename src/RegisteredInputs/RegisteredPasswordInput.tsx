@@ -3,11 +3,11 @@ import {
   FormLabel,
   IconButton, Input, InputGroup, InputProps, InputRightElement,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 
-interface RegisteredPasswordInputProps extends Omit<InputProps, 'type'|'focusBorderColor'>{
+interface RegisteredPasswordInputProps extends Omit<InputProps, 'type' | 'focusBorderColor'>{
   errors:FieldErrors
   register:UseFormRegister<Record<string, any>>
 }

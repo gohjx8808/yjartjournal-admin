@@ -1,7 +1,6 @@
 import {
   Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, VStack,
 } from '@chakra-ui/react';
-import React from 'react';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router';
 import routeNames from '../modules/router/routeNames';
