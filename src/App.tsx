@@ -9,8 +9,16 @@ const App = () => {
   const theme = extendTheme({
     colors: {
       primary: {
+        50: '#FBF1EA',
+        100: '#F3D7C4',
+        200: '#EBBE9E',
+        300: '#E3A478',
+        400: '#DB8B52',
         500: '#f3d4be',
         600: '#e9b895',
+        700: '#7F441A',
+        800: '#542D12',
+        900: '#2A1709',
       },
       secondary: {
         50: '#ffebe3',

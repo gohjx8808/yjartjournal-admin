@@ -1,5 +1,7 @@
+import { Heading, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
+import routeNames from '../modules/router/routeNames';
 import CustomDrawer from './CustomDrawer';
 import Footer from './Footer';
 import NavBar from './NavBar';
@@ -9,11 +11,18 @@ const MainLayout = () => {
 
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
+  const { pathname } = useLocation();
+
+  const pageTitle = Object.keys(routeNames).find((key) => routeNames[key] === pathname);
+
   return (
     <>
       <NavBar toggleDrawer={toggleDrawer} />
       <CustomDrawer isDrawerOpen={isDrawerOpen} onDrawerClose={toggleDrawer} />
-      <Outlet />
+      <VStack bgColor="primary.50" py="5" px="8" alignItems="flex-start">
+        <Heading textTransform="capitalize" size="lg">{pageTitle}</Heading>
+        <Outlet />
+      </VStack>
       <Footer />
     </>
   );

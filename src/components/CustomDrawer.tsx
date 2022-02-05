@@ -43,7 +43,7 @@ const CustomDrawer = (props:CustomDrawerProps) => {
         </DrawerHeader>
         <Divider />
         <DrawerBody>
-          <VStack>
+          <VStack divider={<Divider />}>
             <Button
               colorScheme="secondary"
               variant="ghost"
@@ -55,7 +55,6 @@ const CustomDrawer = (props:CustomDrawerProps) => {
             >
               Users
             </Button>
-            <Divider />
             <Button
               colorScheme="secondary"
               variant="ghost"

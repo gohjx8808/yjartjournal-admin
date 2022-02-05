@@ -1,7 +1,7 @@
 import { Text } from '@chakra-ui/react';
 
 const UserList = () => (
-  <Text>User</Text>
+  <Text />
 );
 
 export default UserList;
