@@ -15,7 +15,7 @@ interface RegisteredPasswordInputProps extends Omit<InputProps, 'type' | 'focusB
 
 const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
   const {
-    errors, id, placeholder,
+    errors, id, placeholder, isRequired,
   } = props;
   const { register, ...inputProps } = props;
 
@@ -23,7 +23,7 @@ const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
   const handleClick = () => setShow(!show);
 
   return (
-    <FormControl isInvalid={!!errors}>
+    <FormControl isInvalid={!!errors} isRequired={isRequired}>
       <FormLabel htmlFor={id}>{placeholder}</FormLabel>
       <InputGroup size="md">
         <Input

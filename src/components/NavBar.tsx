@@ -1,5 +1,5 @@
 import {
-  Box, HStack, Tooltip, IconButton, Spacer, Text,
+  Box, HStack, IconButton, Spacer, Text,
 } from '@chakra-ui/react';
 import { useCookies } from 'react-cookie';
 import { FaBars, FaSignOutAlt } from 'react-icons/fa';
@@ -15,15 +15,14 @@ const NavBar = (props:NavBarProps) => {
   return (
     <Box bg="primary.500" p={3}>
       <HStack mx={3}>
-        <Tooltip label="Toggle Drawer">
-          <IconButton
-            aria-label="toggleDrawer"
-            icon={<FaBars />}
-            variant="ghost"
-            colorScheme="black"
-            onClick={toggleDrawer}
-          />
-        </Tooltip>
+        <IconButton
+          aria-label="toggleDrawer"
+          icon={<FaBars />}
+          variant="ghost"
+          colorScheme="black"
+          onClick={toggleDrawer}
+          _hover={{ backgroundColor: 'primary.600' }}
+        />
         <Spacer />
         <HStack>
           <Text fontWeight="600">
@@ -31,9 +30,7 @@ const NavBar = (props:NavBarProps) => {
             {' '}
             {cookies.userInfo.fullName}
           </Text>
-          <Tooltip label="Log Out">
-            <IconButton aria-label="toggleDrawer" icon={<FaSignOutAlt />} variant="ghost" colorScheme="black" />
-          </Tooltip>
+          <IconButton aria-label="toggleDrawer" icon={<FaSignOutAlt />} variant="ghost" colorScheme="black" _hover={{ backgroundColor: 'primary.600' }} />
         </HStack>
       </HStack>
     </Box>

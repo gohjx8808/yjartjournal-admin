@@ -79,11 +79,13 @@ const Login = () => {
                     register={register}
                     errors={errors.username}
                     id="username"
+                    isRequired
                     placeholder="Username"
                   />
                   <RegisteredPasswordInput
                     errors={errors.password}
                     id="password"
+                    isRequired
                     placeholder="Password"
                     register={register}
                   />
