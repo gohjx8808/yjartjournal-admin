@@ -10,22 +10,22 @@ interface RegisteredTextInputProps extends Omit<InputProps, 'focusBorderColor'>{
 
 const RegisteredTextInput = (props:RegisteredTextInputProps) => {
   const {
-    errors, id, placeholder, isRequired,
+    errors, id, placeholder,
   } = props;
 
   const { register, ...inputProps } = props;
 
   return (
-    <FormControl isInvalid={!!errors} isRequired={isRequired}>
+    <FormControl isInvalid={!!errors}>
       <FormLabel htmlFor={id}>{placeholder}</FormLabel>
       <Input
         {...register(id || '')}
-        focusBorderColor="secondary.main"
+        focusBorderColor="secondary.500"
         bgColor="white"
         {...inputProps}
       />
       <FormErrorMessage>
-        {errors && errors.message}
+        {errors?.message}
       </FormErrorMessage>
     </FormControl>
   );

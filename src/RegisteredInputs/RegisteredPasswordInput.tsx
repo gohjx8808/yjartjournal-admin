@@ -1,5 +1,6 @@
 import {
   FormControl,
+  FormErrorMessage,
   FormLabel,
   IconButton, Input, InputGroup, InputProps, InputRightElement,
 } from '@chakra-ui/react';
@@ -14,7 +15,7 @@ interface RegisteredPasswordInputProps extends Omit<InputProps, 'type' | 'focusB
 
 const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
   const {
-    isRequired, errors, id, placeholder,
+    errors, id, placeholder,
   } = props;
   const { register, ...inputProps } = props;
 
@@ -22,20 +23,23 @@ const RegisteredPasswordInput = (props:RegisteredPasswordInputProps) => {
   const handleClick = () => setShow(!show);
 
   return (
-    <FormControl isInvalid={!!errors} isRequired={isRequired}>
+    <FormControl isInvalid={!!errors}>
       <FormLabel htmlFor={id}>{placeholder}</FormLabel>
       <InputGroup size="md">
         <Input
           {...register(id || '')}
           type={show ? 'text' : 'password'}
-          focusBorderColor="secondary.main"
+          focusBorderColor="secondary.500"
           bgColor="white"
           {...inputProps}
         />
         <InputRightElement>
-          <IconButton aria-label="Toggle Visibility" variant="ghost" onClick={handleClick} icon={show ? <RiEyeOffFill /> : <RiEyeFill />} />
+          <IconButton aria-label="Toggle Visibility" variant="ghost" onClick={handleClick} icon={!show ? <RiEyeOffFill /> : <RiEyeFill />} />
         </InputRightElement>
       </InputGroup>
+      <FormErrorMessage>
+        {errors?.message}
+      </FormErrorMessage>
     </FormControl>
   );
 };

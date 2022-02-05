@@ -9,8 +9,8 @@ import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router';
-import RegisteredPasswordInput from '../../../RegisteredInputs/RegisteredPasswordInput';
-import RegisteredTextInput from '../../../RegisteredInputs/RegisteredTextInput';
+import RegisteredPasswordInput from '../../../registeredInputs/RegisteredPasswordInput';
+import RegisteredTextInput from '../../../registeredInputs/RegisteredTextInput';
 import routeNames from '../../router/routeNames';
 import { getUserInfo, login } from '../src/authApis';
 import { loginSchema } from '../src/authSchema';
@@ -67,7 +67,7 @@ const Login = () => {
   const onSubmit = (values:auth.submitLoginPayload) => submitLogin(values);
 
   return (
-    <Box bgColor="blue.50">
+    <Box bgColor="secondary.50">
       <Container maxW="container.xl">
         <Center h="100vh">
           <VStack spacing="18" width="100%">
@@ -79,13 +79,11 @@ const Login = () => {
                     register={register}
                     errors={errors.username}
                     id="username"
-                    isRequired
                     placeholder="Username"
                   />
                   <RegisteredPasswordInput
                     errors={errors.password}
                     id="password"
-                    isRequired
                     placeholder="Password"
                     register={register}
                   />
