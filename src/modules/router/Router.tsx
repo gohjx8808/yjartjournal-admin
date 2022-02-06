@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useCookies } from 'react-cookie';
+import { getAuth } from 'firebase/auth';
 import { Route, Routes, useNavigate } from 'react-router';
 import MainLayout from '../../components/MainLayout';
 import Login from '../auth/views/Login';
@@ -10,13 +9,12 @@ import routeNames from './routeNames';
 
 const Router = () => {
   const navigate = useNavigate();
-  const [cookie] = useCookies(['userInfo']);
 
-  useEffect(() => {
-    if (!cookie.userInfo) {
+  getAuth().onAuthStateChanged((user) => {
+    if (!user) {
       navigate(routeNames.home);
     }
-  }, [navigate, cookie]);
+  });
 
   return (
     <Routes>
