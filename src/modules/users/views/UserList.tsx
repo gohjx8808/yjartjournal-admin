@@ -1,14 +1,19 @@
+/* eslint-disable react/prop-types */
 import {
   chakra,
   Icon,
   Skeleton,
-  Table, Tbody, Td, Th, Thead, Tr,
+  Table, Tbody, Td, Text, Th, Thead, Tr,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useMemo } from 'react';
-import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
+import {
+  FaCaretDown, FaCaretUp, FaMinusSquare, FaPlusSquare,
+} from 'react-icons/fa';
 import { useQuery } from 'react-query';
-import { Column, useSortBy, useTable } from 'react-table';
+import {
+  Column, useExpanded, useSortBy, useTable,
+} from 'react-table';
 import { caseInsensitiveSort, dateSort } from '../../../helper';
 import { getUserList } from '../src/usersApis';
 
@@ -32,6 +37,17 @@ const UserList = () => {
   );
 
   const columns:Column<user.UserData>[] = useMemo(() => [
+    {
+      id: 'expander',
+      Cell: ({ row }:{ row:any }) => (
+        <chakra.span {...row.getToggleRowExpandedProps()}>
+          <Icon
+            as={!row.isExpanded ? FaPlusSquare : FaMinusSquare}
+            color={!row.isExpanded ? 'secondary.500' : 'secondary.200'}
+          />
+        </chakra.span>
+      ),
+    },
     {
       Header: 'UID',
       accessor: 'uid',
@@ -74,6 +90,7 @@ const UserList = () => {
       data: tableData,
     },
     useSortBy,
+    useExpanded,
   );
 
   console.log(data);
@@ -108,13 +125,24 @@ const UserList = () => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <Tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <Td {...cell.getCellProps()}>
-                    {cell.render('Cell')}
+              <>
+                <Tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <Td {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </Td>
+                  ))}
+                </Tr>
+                {/* @ts-ignore */}
+                {row.isExpanded
+                && (
+                <Tr>
+                  <Td>
+                    <Text>asdasdasd</Text>
                   </Td>
-                ))}
-              </Tr>
+                </Tr>
+                )}
+              </>
             );
           })}
         </Tbody>
