@@ -21,6 +21,8 @@ const MainLayout = () => {
       <CustomDrawer isDrawerOpen={isDrawerOpen} onDrawerClose={toggleDrawer} />
       <VStack bgColor="primary.50" py="5" px="8" alignItems="flex-start">
         <Heading textTransform="capitalize" size="lg">{pageTitle}</Heading>
+      </VStack>
+      <VStack py="8" px="8" alignItems="flex-start">
         <Outlet />
       </VStack>
       <Footer />
