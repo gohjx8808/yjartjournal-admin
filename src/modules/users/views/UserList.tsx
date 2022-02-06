@@ -3,9 +3,18 @@ import { useQuery } from 'react-query';
 import { getUserList } from '../src/usersApis';
 
 const UserList = () => {
-  // const [userList, setUserList] = useState([]);
-  const { data } = useQuery('get', getUserList);
-  // console.log(getAuth().currentUser);
+  const { data } = useQuery('get', getUserList, {
+    select: (d) => {
+      const list = d.val();
+      const processedList:user.UserData[] = [];
+      Object.keys(list).map((key) => {
+        const user = { ...list[key], uid: key };
+        processedList.push(user);
+        return null;
+      });
+      return processedList;
+    },
+  });
   console.log(data);
 
   return (
