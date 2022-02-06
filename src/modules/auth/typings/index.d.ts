@@ -1,25 +1,30 @@
 declare namespace auth{
 
-  interface state{
+  interface State{
     userInfo:userInfo
   }
-  interface submitLoginPayload{
+  interface SubmitLoginPayload{
     username:string
     password:string
   }
 
-  interface userInfo{
+  interface UserInfo{
     addressBook:addressData[]
     dob:string
     email:string
     fullName:string
     gender:string
     phoneNumber:number
-    roles:string[]
+    roles:RoleData
     uid:string
   }
 
-  interface addressData{
+  interface RoleData{
+    admin:boolean
+    customer:boolean
+  }
+
+  interface AddressData{
     addressLine1:string
     addressLine2:string
     city:string

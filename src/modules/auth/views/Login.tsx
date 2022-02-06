@@ -31,8 +31,8 @@ const Login = () => {
   const { mutate: getuserInfo } = useMutation('getUserInfo', getUserInfo, {
     onSuccess: (response) => {
       const uid = response.key || '';
-      const userInfo:auth.userInfo = response.val();
-      if (!userInfo.roles.includes('admin')) {
+      const userInfo:auth.UserInfo = response.val();
+      if (!userInfo.roles.admin) {
         throw Error('No permission');
       }
       setCookie('userInfo', { ...userInfo, uid }, { path: '/' });
@@ -64,7 +64,7 @@ const Login = () => {
     },
   });
 
-  const onSubmit = (values:auth.submitLoginPayload) => submitLogin(values);
+  const onSubmit = (values:auth.SubmitLoginPayload) => submitLogin(values);
 
   return (
     <Box bgColor="secondary.50">

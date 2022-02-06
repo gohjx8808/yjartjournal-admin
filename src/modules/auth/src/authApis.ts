@@ -3,7 +3,7 @@ import {
   getDatabase, ref, child, get,
 } from 'firebase/database';
 
-export const login = (payload:auth.submitLoginPayload) => {
+export const login = (payload:auth.SubmitLoginPayload) => {
   const auth = getAuth();
   return signInWithEmailAndPassword(auth, payload.username, payload.password);
 };
